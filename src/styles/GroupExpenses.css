@@ -1,0 +1,42 @@
+.group-expenses {
+  min-height: 100vh;
+  background: #1a1a1a;
+  padding: 2rem;
+}
+
+.group-main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.group-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.group-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.group-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .group-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .group-expenses {
+    padding: 1rem;
+  }
+} 

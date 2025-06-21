@@ -1,0 +1,286 @@
+.dashboard {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Profile Overview Section */
+.profile-overview {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+.profile-info p {
+  margin: 0.5rem 0 0;
+  color: #7f8c8d;
+}
+
+.financial-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.summary-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.summary-card h3 {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.summary-card p {
+  margin: 0.5rem 0 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.add-expense-btn,
+.upload-receipt-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-expense-btn {
+  background: #3498db;
+  color: white;
+}
+
+.upload-receipt-btn {
+  background: #2ecc71;
+  color: white;
+}
+
+.add-expense-btn:hover,
+.upload-receipt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Category Expenses */
+.category-expenses,
+.spending-trends,
+.savings-goals,
+.recent-transactions {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Savings Goals */
+.goals-list {
+  margin-top: 1rem;
+}
+
+.goal-item {
+  margin-bottom: 1rem;
+}
+
+.goal-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.goal-info h4 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.goal-info p {
+  margin: 0;
+  color: #7f8c8d;
+}
+
+.progress-bar {
+  background: #ecf0f1;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress {
+  background: #3498db;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Recent Transactions */
+.transactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.transactions-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-box,
+.filter-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.search-box input,
+.filter-dropdown select {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.transactions-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.transaction-info h4 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.transaction-info .category {
+  margin: 0.25rem 0 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.transaction-details {
+  text-align: right;
+}
+
+.transaction-details .amount {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.transaction-details .date {
+  margin: 0.25rem 0 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+/* Settings Button */
+.settings-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.settings-btn:hover {
+  transform: rotate(90deg);
+  background: #34495e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .financial-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transactions-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .transactions-controls {
+    width: 100%;
+    flex-direction: column;
+  }
+} 

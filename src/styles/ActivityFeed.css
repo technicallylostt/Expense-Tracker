@@ -1,0 +1,78 @@
+.activity-feed {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.activity-feed h3 {
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+}
+
+.activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activity-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.activity-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6366f1;
+  flex-shrink: 0;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-text {
+  color: #ffffff;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.activity-text .user {
+  font-weight: 500;
+  color: #6366f1;
+}
+
+.activity-time {
+  display: block;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .activity-item {
+    padding: 0.8rem;
+  }
+
+  .activity-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .activity-text {
+    font-size: 0.9rem;
+  }
+} 
