@@ -1,6 +1,7 @@
 package com.expensetracker.service.impl;
 
 import com.expensetracker.dto.CategoryDTO;
+import com.expensetracker.exception.DuplicateCategoryException;
 import com.expensetracker.model.Category;
 import com.expensetracker.model.User;
 import com.expensetracker.repository.CategoryRepository;
@@ -27,8 +28,13 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         User user = userService.getEntityById(categoryDTO.getUserId());
         
-        if (categoryRepository.existsByNameAndUser(categoryDTO.getName(), user)) {
-            throw new RuntimeException("Category with this name already exists");
+        System.out.println("Checking if category exists: " + categoryDTO.getName() + " for user: " + user.getId());
+        boolean exists = categoryRepository.existsByNameAndUser(categoryDTO.getName(), user);
+        System.out.println("Category exists: " + exists);
+        
+        if (exists) {
+            System.out.println("Throwing DuplicateCategoryException");
+            throw new DuplicateCategoryException("Category with name '" + categoryDTO.getName() + "' already exists for this user");
         }
 
         Category category = new Category();

@@ -26,6 +26,7 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
+    @NotBlank
     @Column(nullable = false)
     private String color;
 

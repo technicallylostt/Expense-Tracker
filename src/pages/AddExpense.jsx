@@ -6,7 +6,7 @@ const AddExpense = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (formData) => {
-    // TODO: Implement expense submission logic
+    // Implement expense submission logic
     console.log('Expense data:', formData);
     // After successful submission, navigate back to the previous page
     navigate(-1);

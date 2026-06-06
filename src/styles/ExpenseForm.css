@@ -121,7 +121,7 @@
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
 }
 
-/* Modal specific styles */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -177,7 +177,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Design */
+
 @media (max-width: 640px) {
   .expense-form-container {
     padding: 1rem;

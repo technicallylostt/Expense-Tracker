@@ -39,9 +39,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public ExpenseDTO createExpense(ExpenseDTO expenseDTO) {
         User user = userService.getEntityById(expenseDTO.getUserId());
-        CategoryDTO categoryDTO = categoryService.getCategoryById(expenseDTO.getCategoryId(), expenseDTO.getUserId())
-               if (categoryDTO == null) throw new RuntimeException("Category not found");
-               Category category = convertToCategoryEntity(categoryDTO);
+        CategoryDTO categoryDTO = categoryService.getCategoryById(expenseDTO.getCategoryId(), expenseDTO.getUserId());
+        if (categoryDTO == null) throw new RuntimeException("Category not found");
+        Category category = convertToCategoryEntity(categoryDTO);
 
         Expense expense = new Expense();
         expense.setDescription(expenseDTO.getDescription());
@@ -55,10 +55,9 @@ public class ExpenseServiceImpl implements ExpenseService {
             if (groupDTO == null) throw new RuntimeException("Group not found");
             Group group = convertToGroupEntity(groupDTO);
             expense.setGroup(group);
+        } else {
+            expense.setGroup(null);
         }
-        else {
-        expense.setGroup(null);
-    }
 
         Expense savedExpense = expenseRepository.save(expense);
         return convertToDTO(savedExpense);
@@ -74,9 +73,9 @@ public class ExpenseServiceImpl implements ExpenseService {
             throw new RuntimeException("Not authorized to update this expense");
         }
 
-        Category category = categoryService.getCategoryById(expenseDTO.getCategoryId(), expenseDTO.getUserId())
-                if (categoryDTO == null) throw new RuntimeException("Category not found");
-               Category category = convertToCategoryEntity(categoryDTO);
+        CategoryDTO categoryDTO = categoryService.getCategoryById(expenseDTO.getCategoryId(), expenseDTO.getUserId());
+        if (categoryDTO == null) throw new RuntimeException("Category not found");
+        Category category = convertToCategoryEntity(categoryDTO);
 
         expense.setDescription(expenseDTO.getDescription());
         expense.setAmount(expenseDTO.getAmount());
@@ -84,8 +83,9 @@ public class ExpenseServiceImpl implements ExpenseService {
         expense.setCategory(category);
 
         if (expenseDTO.getGroupId() != null) {
-            Group group = groupService.getGroupById(expenseDTO.getGroupId(), expenseDTO.getUserId())
-                    .orElseThrow(() -> new RuntimeException("Group not found"));
+            GroupDTO groupDTO = groupService.getGroupById(expenseDTO.getGroupId(), expenseDTO.getUserId());
+            if (groupDTO == null) throw new RuntimeException("Group not found");
+            Group group = convertToGroupEntity(groupDTO);
             expense.setGroup(group);
         } else {
             expense.setGroup(null);

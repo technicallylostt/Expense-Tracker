@@ -18,6 +18,6 @@ public class GroupDTO {
     
     private String description;
     private Set<Long> memberIds;
-    private Long UserId;
+    private Long userId;
     private Long createdById;
 } 

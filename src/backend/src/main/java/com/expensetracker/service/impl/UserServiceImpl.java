@@ -3,9 +3,11 @@ package com.expensetracker.service.impl;
 import com.expensetracker.dto.UserDTO;
 import com.expensetracker.dto.UserRegistrationDTO;
 import com.expensetracker.dto.UserLoginDTO;
+import com.expensetracker.dto.LoginResponseDTO;
 import com.expensetracker.model.User;
 import com.expensetracker.repository.UserRepository;
 import com.expensetracker.service.UserService;
+import com.expensetracker.config.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @Override
     public UserDTO registerUser(UserRegistrationDTO registrationDTO) {
@@ -38,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO loginUser(UserLoginDTO loginDTO) {
+    public LoginResponseDTO loginUser(UserLoginDTO loginDTO) {
         User user = userRepository.findByEmail(loginDTO.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -46,7 +51,18 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Invalid password");
         }
 
-        return convertToDTO(user);
+        // Generate JWT token
+        String token = jwtUtil.generateToken(createUserDetails(user));
+        
+        return new LoginResponseDTO(token, convertToDTO(user));
+    }
+
+    private org.springframework.security.core.userdetails.UserDetails createUserDetails(User user) {
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getEmail())
+                .password(user.getPassword())
+                .authorities("USER")
+                .build();
     }
 
     @Override

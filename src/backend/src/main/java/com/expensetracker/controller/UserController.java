@@ -3,6 +3,7 @@ package com.expensetracker.controller;
 import com.expensetracker.dto.UserDTO;
 import com.expensetracker.dto.UserRegistrationDTO;
 import com.expensetracker.dto.UserLoginDTO;
+import com.expensetracker.dto.LoginResponseDTO;
 import com.expensetracker.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserDTO> loginUser(@Valid @RequestBody UserLoginDTO loginDTO) {
+    public ResponseEntity<LoginResponseDTO> loginUser(@Valid @RequestBody UserLoginDTO loginDTO) {
         return ResponseEntity.ok(userService.loginUser(loginDTO));
     }
 
