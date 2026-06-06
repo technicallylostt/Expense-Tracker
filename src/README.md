@@ -10,7 +10,6 @@ A full-stack expense tracking application with a React frontend and Spring Boot 
 - Recharts
 - React Icons
 - Create React App (react-scripts)
-- Tailwind CSS
 - Custom CSS
 
 ### Backend
