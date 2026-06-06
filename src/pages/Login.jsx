@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaGoogle, FaGithub } from 'react-icons/fa';
+import api from '../services/api';
 import '../styles/Auth.css';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement login logic
-    console.log('Login data:', formData);
+    setLoading(true);
+    setError('');
+    try {
+      await api.login(formData.email, formData.password);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -27,6 +34,8 @@ const Login = () => {
       <div className="auth-card">
         <h2>Welcome Back!</h2>
         <p className="auth-subtitle">Sign in to continue to your account</p>
+
+        {error && <p className="auth-error">{error}</p>}
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
@@ -67,18 +76,18 @@ const Login = () => {
             </Link>
           </div>
 
-          <button type="submit" className="auth-button">
-            Sign In
+          <button type="submit" className="auth-button" disabled={loading}>
+            {loading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 
         <div className="social-login">
           <p>Or continue with</p>
           <div className="social-buttons">
-            <button className="social-button google">
+            <button type="button" className="social-button google">
               <FaGoogle /> Google
             </button>
-            <button className="social-button github">
+            <button type="button" className="social-button github">
               <FaGithub /> GitHub
             </button>
           </div>
@@ -95,4 +104,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;
