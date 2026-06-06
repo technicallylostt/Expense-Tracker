@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GroupHeader from '../components/group/GroupHeader';
 import AddGroupExpense from '../components/group/AddGroupExpense';
 import GroupTransactions from '../components/group/GroupTransactions';
@@ -9,7 +9,7 @@ import '../styles/GroupExpenses.css';
 
 const GroupExpenses = () => {
   // Mock data - replace with actual data from your backend
-  const [groupData, setGroupData] = useState({
+  const groupData = {
     id: 1,
     name: 'Trip to Goa',
     members: [
@@ -48,7 +48,7 @@ const GroupExpenses = () => {
       { id: 1, user: 'John Doe', message: 'Let\'s split the hotel cost equally', timestamp: '2024-03-15T10:05:00' },
       { id: 2, user: 'Jane Smith', message: 'Sounds good!', timestamp: '2024-03-15T10:10:00' },
     ],
-  });
+  };
 
   const handleAddExpense = (expenseData) => {
     // TODO: Implement expense submission logic

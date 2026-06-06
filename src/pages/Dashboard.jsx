@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlus, FaUpload, FaCog, FaSearch, FaFilter } from 'react-icons/fa';
+import { FaPlus, FaUpload, FaCog } from 'react-icons/fa';
 import { PieChart, Pie, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import ExpenseModal from '../components/ExpenseModal';
 import TransactionHistory from '../components/TransactionHistory';
@@ -8,8 +8,6 @@ import '../styles/TransactionHistory.css';
 
 const Dashboard = () => {
   const [showAddExpense, setShowAddExpense] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('all');
 
   // Mock data - replace with actual data from your backend
   const userData = {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaFilter, FaEdit, FaTrash, FaSort, FaSortUp, FaSortDown } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaEdit, FaTrash, FaSortUp, FaSortDown } from 'react-icons/fa';
 import ExpenseModal from './ExpenseModal';
 
 const TransactionHistory = ({ transactions: initialTransactions = [], onUpdate, onDelete }) => {
